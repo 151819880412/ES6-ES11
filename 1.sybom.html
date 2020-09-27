@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let game = {
+        up: () => {
+          console.log("up");
+        },
+      };
+      let methods = {
+        up: Symbol("up"),
+      };
+      let up = Symbol("up");
+      game[up] = () => {
+        console.log("symbol-up");
+      };
+      game[methods.up] = () => {
+        console.log("symbol-up2");
+      };
+      console.log(game);
+      game.up();
+      game[up]();
+      game[methods.up]();
+
+      let youxi = {
+        name: "狼人杀",
+        [Symbol("say")]: () => {
+          console.log("say-狼人杀");
+        },
+      };
+      console.log(youxi)
+      console.log(youxi.say)
+    </script>
+  </body>
+</html>

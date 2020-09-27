@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+    1.Symbol.hasInstance，指向一个内部方法。当其他对象使用instanceof运算符，判断是否为该对象的实例时，会调用这个方法。
+      比如，1 instanceof Person在语言内部，实际调用的是static[Symbol.hasInstance](params)
+    2.Symbol.isConcatSpreadable:对象的Symbol.isConcatSpreadable等于的是一个布尔值，表示的是该对象用于Array.prototype.concat()时，后是否可以展开
+    */
+      class Even {
+        static [Symbol.hasInstance](params) {
+          console.log(typeof Number(params))
+          return Number(params) % 2 === 0;
+        }
+      }
+      x = new Even();
+      console.log(1 instanceof Even); //false
+      console.log(2 instanceof Even); //true
+      console.log(x instanceof Even); //true 原本判断x是否为Even的实例的方法，被改成了传入的数字%2===0。所以此刻是false。
+
+      const arr1 = [1,2,3]
+      const arr2 = [4,5,6]
+      console.log(arr1.concat(arr2))
+      arr2[Symbol.isConcatSpreadable] = false
+      console.log(arr1.concat(arr2))
+
+    </script>
+  </body>
+</html>

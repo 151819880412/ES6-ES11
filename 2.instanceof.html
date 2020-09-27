@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        instanceof
+            1.instanceof的普通的用法，obj instanceof Object 检测Object.prototype是否存在于参数obj的原型链上。
+                functionPerson(){};
+                var p =new Person();
+                console.log(p instanceof Person);//true
+
+            2.继承中判断实例是否属于它的父类
+                function Aoo() {}
+                function Foo() {}
+                Foo.prototype = new Aoo(); //JavaScript 原型继承
+                var foo = new Foo();
+                console.log(foo instanceof Foo); //true
+                console.log(foo instanceof Aoo); //true
+        */
+
+      //   function Person() {}
+      //   var p = new Person();
+      //   console.log(p instanceof Person); //true
+
+      //   function Aoo() {}
+      //   function Foo() {}
+      //   Foo.prototype = new Aoo(); //JavaScript 原型继承
+      //   var foo = new Foo();
+      //   console.log(foo instanceof Foo); //true
+      //   console.log(foo instanceof Aoo); //true
+
+      function Person() {}
+      console.log(Object instanceof Object); //true
+      //第一个Object的原型链：Object=>
+      //Object.__proto__ => Function.prototype=>Function.prototype.__proto__=>Object.prototype
+      //第二个Object的原型：Object=> Object.prototype
+
+      console.log(Function instanceof Function); //true
+      //第一个Function的原型链：Function=>Function.__proto__ => Function.prototype
+      //第二个Function的原型：Function=>Function.prototype
+
+      console.log(Function instanceof Object); //true
+      //Function=>
+      //Function.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+      //Object => Object.prototype
+
+      console.log(Person instanceof Function); //true
+      //Person=>Person.__proto__=>Function.prototype
+      //Function=>Function.prototype
+
+      console.log(String instanceof String); //false
+      //第一个String的原型链：String=>
+      //String.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+      //第二个String的原型链：String=>String.prototype
+
+      console.log(Boolean instanceof Boolean); //false
+      //第一个Boolean的原型链：Boolean=>
+      //Boolean.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+      //第二个Boolean的原型链：Boolean=>Boolean.prototype
+
+      console.log(Person instanceof Person); //false
+      //第一个Person的原型链：Person=>
+      //Person.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+      //第二个Person的原型链：Person=>Person.prototype
+
+      var obj1 = {};
+      console.log(obj1);
+
+      var fu = Function();
+      console.log(fu.__proto__);
+      console.log(fu.prototype);
+
+      var Foo = new Function();
+      var foo = new Foo();
+      console.log(foo.__proto__ == Foo.prototype);
+      console.log(Foo.prototype.constructor == Foo);
+      console.log(Foo.prototype.constructor.prototype == Foo.prototype); //由2可得 Foo.prototype.constructor=>Foo
+      console.log(Foo.__proto__ == Function.prototype);
+      console.log(Function.__proto__ == Function.prototype);
+      console.log(Object.__proto__ == Function.prototype);
+      console.log(Object);
+
+      /*
+        原型链图解：
+            1.obj只有隐士原型，function有显示原型，由于function是对象，所以function又叫做函数对象，所以function既有__proto__又有prototype
+            2.实例对象的__proto__指向构造函数的prototype
+            3.构造函数的prototype的构造器constructor指向构造函数本身
+            4.由于构造函数也是对象，所以构造函数有__proto__，又由于构造函数是new Function来的，所以构造函数的__proto__指向Function.prototype
+            5.Function比较特殊，Function 本身是一个函数。而所有函数都是Function 的实例。所以 Function是Function的实例.他的__proto__和prototype都指向Function.prototype
+            6.由于Object也是一个函数对象，所以他的__proto__指向Function的prototype
+            7.由于Function.prototype也是对象，所以在往上找只能找到Object.prototype
+            8.由于Object.prototype也是对象所以也能往上找，但是由于设计缺陷不能一直往上找（无穷尽）所以Object.prototype.__proto__=null
+      */
+    </script>
+  </body>
+</html>
