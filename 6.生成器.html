@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    生成器其实就是一个函数
+      - 异步编程  纯回调函数--node fs ajax mongodb
+    */
+   function * gen(){
+     console.log('111')
+     yield '一直没有耳朵'   //代码块，类似块级作用域
+     console.log('222')
+     yield '一直没有尾巴'
+     console.log('333')
+     yield '真奇怪'
+     console.log('444')
+   }
+   let iterator = gen()
+   console.log(iterator)
+   iterator.next()
+   iterator.next()
+   iterator.next()
+   iterator.next()
+  //  遍历
+  for (const v of gen()) {
+      console.log(v)
+  }
+  </script>
+</body>
+</html>

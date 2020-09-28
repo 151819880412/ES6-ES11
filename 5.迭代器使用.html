@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自定义遍历数据</title>
+  </head>
+  <body>
+    <script>
+      // 声明一个对象
+      let banji = {
+        anme: "终极一班",
+        stus: ["xiaoming", "xiaoning", "xiaotian", "knight"],
+        [Symbol.iterator]() {
+          // 索引变量
+          let index = 0;
+          let that = this;
+          // 创建一个指针对象，指向当前数据结构的起始位置
+          return {
+            // 每次调用next方法都会返回一个包含value和done属性的对象，
+            next: function () {
+              if (index < that.stus.length) {
+                const result = { value: that.stus[index], done: false };
+                // 下标自增
+                index++;
+                // 返回结果
+                return result;
+              } else {
+                return { value: that.stus[index], done: true };
+              }
+            },
+          };
+        },
+      };
+      // 遍历这个对象
+      /*
+      为什么不直接banji.stus.forEach遍历？
+        - 不符合面向对象编程思想
+        - stus是banji的私有变量，直接.就绕过了banji
+        - 面向对象思想：一切面向对象，stus是属性
+    */
+      for (const v of banji) {
+        console.log(v);
+      }
+
+      let obj ={
+        a:()=>{
+          console.log(this)
+        },
+        b:function(){
+          console.log(this)
+        }
+      }
+      console.log(obj)
+      console.log(obj.a())
+      console.log(obj.b())
+    </script>
+  </body>
+</html>
