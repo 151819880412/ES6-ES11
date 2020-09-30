@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+    ES6提供了新的数据结构set（集合）他类似数组，但成员的值都是唯一的，集合实现了iterator接口，可以使用for of和扩展运算符遍历
+    集合的属性和方法
+      - size 返回集合元素个数
+      - add 增加一个新元素
+      - delete 删除元素，返回boolean
+      - has 检测集合中是否包含某个元素，返回boolean
+      - clear 清空
+    */
+
+      // 声明一个set
+      let set = new Set([1, 2, 3, 4, 5, 6, 1, 2, 3]);
+      console.log(set); //会自动去重，但是数组对象就不行
+      // 添加新元素
+      // set.add(7)
+      // console.log(set)
+      // 删除元素
+      // set.delete(6)
+      // console.log(set)
+      // 检测
+      // console.log(set.has(7))
+      // 清空
+      // set.clear()
+      // console.log(set)
+      // 遍历
+      for (const v of set) {
+        console.log(v);
+      }
+    </script>
+  </body>
+</html>
