@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 实例化Promise  Promise有三种状态pending resolve reject 只会存在一种状态（只能成功或者失败）
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let data = "数据库中用户的数据";
+          resolve(data);
+          reject(data);
+        }, 1000);
+      });
+      p.then((value) => {
+        console.log(value);
+      }).catch((value) => {
+        console.log(value);
+      });
+    </script>
+  </body>
+</html>
