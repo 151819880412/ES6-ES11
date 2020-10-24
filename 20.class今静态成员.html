@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ES5
+    // function Phone (){
+    // }
+    // Phone.name = '手机'
+    // Phone.change = function(){
+    //   console.log('change')
+    // }
+    // Phone.prototype.size = 5
+    // let shouji = new Phone()
+    // console.log(shouji.size)
+    // console.log(shouji.name)  //undefind 实例对象的属性和构造函数对象的属性不是互通的实例对象只能访问构造函数的prototype(静态成员)
+
+
+    // ES6 class
+    class Phone {
+      // 静态属性
+      static name = '手机'
+      static change(){
+        console.log('111')
+      }
+    }
+    let shouji = new Phone()
+    console.log(shouji.name)  //undefind类的静态属性属于类不属于实例
+    console.log(Phone.name)
+
+  </script>
+</body>
+</html>

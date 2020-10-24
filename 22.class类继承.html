@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      构造函数的继承和class的继承区别在于构造函数利用了原型链
+      所以实例对象可以沿着原型链访问构造函数的全部属性
+
+      class的继承子类只能访问父类的成员属性(访问不了静态成员和私有属性)
+    */
+    class Phone {
+      // 构造方法
+      constructor(brand,price){
+        console.log(brand,price)
+        this.brand = brand
+        this.price = price
+      }
+      // 父类的成员属性
+      calls(){
+        console.log('打电话')
+      }
+    }
+    class SmartPhone extends Phone {
+      // 构造方法
+      constructor(brand,price,color,size){
+        super(brand,price)
+        this.color = color
+        this.size = size
+      }
+      photo(){
+        console.log('拍照')
+      }
+    }
+
+    let xiaomi = new SmartPhone('小米',999,'red',5)
+    console.log(xiaomi)
+
+  </script>
+</body>
+</html>

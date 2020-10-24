@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      子类方法和父类方法同名时，子类会覆盖父类方法
+    */
+    class Phone {
+      // 构造方法
+      constructor(brand,price){
+        console.log(brand,price)
+        this.brand = brand
+        this.price = price
+      }
+      // 父类的成员属性
+      calls(){
+        console.log('打电话')
+      }
+    }
+    class SmartPhone extends Phone {
+      // 构造方法
+      constructor(brand,price,color,size){
+        super(brand,price)
+        this.color = color
+        this.size = size
+      }
+      photo(){
+        console.log('拍照')
+      }
+      calls(){
+        console.log('视频通话')
+      }
+    }
+    let xiaomi = new SmartPhone('小米',999,'red',5)
+    console.log(xiaomi)
+
+  </script>
+</body>
+</html>

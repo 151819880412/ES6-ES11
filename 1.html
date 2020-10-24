@@ -7,25 +7,11 @@
 </head>
 <body>
   <script>
-    let obj ={
-      a:1,
-      b:2,
-      obj2:{
-        a1:1,
-        b1:2
-      }
-    }
-    let obj2 ={
-      c:3,
-      d:4,
-      obj3:{
-        a2:1,
-        b2:2
-      }
-    }
-    let objs = Object.assign(obj,obj2)
-    obj2.obj3.a2 = 2
-    console.log(objs)
+    var p =new Promise((resolve, reject) => {
+       console.log(resolve())
+       console.log(reject)
+      })
+    console.log(p)
   </script>
 </body>
 </html>
