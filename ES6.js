@@ -217,37 +217,83 @@
       }
 
  16：Map
-      ES6提供了Map数据结构，它类似对象，也是键值对的集合，但是‘键’的范围不限于字符串，各种类型的值（包括对象）都可以作为键。
-      Map也实现了iterator接口，所以可以使用扩展运算符和for...of...进行遍历，Map的属性和方法
-        1.size  返回Map元素的个数
-        2.set   增加一个新元素，返回当前Map
-        3.get   返回键名对象的键值
-        4.has   检测Map对象中是否包含某个元素，返回Boolean值
-        5.clear 清空结合，返回undefind     
-        // 创建一个空Map
-        let m = new Map ()
-        m.set('name','aaa')
-        m.set('change',()=>{
-          console.log('函数')
-        })
-        let key = {
-          obj:'对象'
-        }
-        m.set(key,[1,2,3])
-        console.log(m)
-        // size
-        console.log(m.size)
-        // delete
-        m.delete('name')
-        // 获取
-        console.log(m.get('change'))
-        // 清空
-        // m.clear()
-        // 遍历
-        for (const v of m) {
-          console.log(v)
-        }
+      1.ES6提供了Map数据结构，它类似对象，也是键值对的集合，但是‘键’的范围不限于字符串，各种类型的值（包括对象）都可以作为键。
+        Map也实现了iterator接口，所以可以使用扩展运算符和for...of...进行遍历，Map的属性和方法
+          1.size  返回Map元素的个数
+          2.set   增加一个新元素，返回当前Map
+          3.get   返回键名对象的键值
+          4.has   检测Map对象中是否包含某个元素，返回Boolean值
+          5.clear 清空结合，返回undefind     
+          // 创建一个空Map
+          let m = new Map ()
+          m.set('name','aaa')
+          m.set('change',()=>{
+            console.log('函数')
+          })
+          let key = {
+            obj:'对象'
+          }
+          m.set(key,[1,2,3])
+          console.log(m)
+          // size
+          console.log(m.size)
+          // delete
+          m.delete('name')
+          // 获取
+          console.log(m.get('change'))
+          // 清空
+          // m.clear()
+          // 遍历
+          for (const v of m) {
+            console.log(v)
+          }
+  17：class
+      1.ES6提供了更接近传统语言的写法，引入了class这个概念，最为度下行的模板。通过class关键字可以定义类，ES6的class可以看做只是一个语法糖
+        他的绝大部分功能ES5都可以做到，新的class写法只是让对象原型写法更清晰，更面向对象变成的语法而已
+      2.构造函数的继承和class的继承区别在于构造函数利用了原型链，所以实例对象可以沿着原型链访问构造函数的全部属性
+        class的继承子类只能访问父类的成员属性(访问不了静态成员和私有属性)
+      3.子类方法和父类方法同名时，子类会覆盖父类方法
+      4.class的get和set类似vue的计算属性的get和set
 
+  18：数值扩展
+      0. Number.EPSILON是js标识最小精度，是js的一个具体值
+      1. 二进制和十进制
+      2. Number.isFinite  检测一个数值是否为有限数
+      3. Number.isNAN 检测一个数值是否为NAN
+      4. Number.parseInt / Number.parseFloat 字符串转整数  parseInt娶不到小数点后面的
+      5. Number.isInterger 判断一个数值是否为整数
+      6. Math.trunc  将数字的小数部分抹掉(参数可以是number也可以是字符串)
+      7. Math.sign  判断一个数为正数，负数，还是零(参数可以是number也可以是字符串,返回 0,1，-1)
+
+  19：对象扩展
+      1. Object.is  判断两个值是否完全相等  类似===但是判断NaN时不同
+      2. Object.assign 对象的合并  后者会将前者同名的参数全部覆盖,属于浅拷贝
+      3. Object.setPrototypeOf  Object.getPrototypeOf  设置原型对象(相当于对象的__proto__，函数的prototype)/获取对象的原型链
+
+ES7:
+  
+  20：数组扩展
+      1. Array.prototype.includes    //检测数组中是否包含某个元素，返回布尔值  只能判断基本数据类型
+      2. 指数操作符                   // ** 实现幂运算，2 ** 10  相当于Math.pow
+
+ES8；
+
+  21：对象扩展
+      1. Object.keys                                遍历对象的key 的到key数组
+      2. Object.values                              遍历对象的value 的到value数组
+      3. Object.entries                             得到对象的 [key,value] 的数组
+      4. Object.getOwnPropertyDescriptors           对象属性的描述对象
+
+ES9：
+
+  22：Rest参数和扩展运算符
+      Rest参数和spread扩展运算符在ES6中已经引入，不过ES6只针对数组，
+      在ES9中为对象提供了像数组一样的rest参数和扩展运算符
+  
+  23：正则扩展
+      1. ?<别名> 用于捕获动态参数 在groups竖向上
+      2. 反向断言
+      3. dot .   元字符 除换行以外的任意单个字符
 
 
 

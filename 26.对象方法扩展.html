@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      1. Object.is  判断两个值是否完全相等  类似===但是判断NaN时不同
+      2. Object.assign 对象的合并  后者会将前者同名的参数全部覆盖,属于浅拷贝
+      3. Object.setPrototypeOf  Object.getPrototypeOf  设置原型对象(相当于对象的__proto__，函数的prototype)/获取对象的原型链
+    */
+
+    // 1.
+    console.log(Object.is(100,100))
+    console.log(Object.is(NaN,NaN))
+    console.log(NaN==NaN)
+    console.log(NaN===NaN)
+
+    // 2.
+    let obj1 ={
+      a:1,
+      b:2,
+      c:{
+        c1:3,
+        c2:{
+          c3:4
+        }
+      }
+    }
+    let obj2 = {
+      a:1,
+      d:4,
+      c:{
+        c1:4,
+        c11:4,
+        c2:{
+          c33:5
+        }
+      }
+    }
+    console.log(Object.assign(obj1,obj2))
+
+    // 3.
+    let school = {
+      name:'111'
+    }
+    let city = {
+      xiaoqu:[1,2,3]
+    }
+    Object.setPrototypeOf(school,city)
+    // school.__proto__ = city
+    console.log(school)
+    console.log(Object.getPrototypeOf(city))
+
+
+  </script>
+</body>
+</html>

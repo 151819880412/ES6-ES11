@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      1. ?<别名> 用于捕获动态参数 在groups竖向上
+      2. 反向断言
+      3. dot .   元字符 除换行以外的任意单个字符
+    */
+      //  1. ?<>
+      let str1 = '<a href="http://www.baidu.com">百度</a>';
+      let reg1 = /<a href="(.*)">(.*)<\/a>/;
+      console.log(reg1.exec(str1));
+      let str2 = '<a href="http://www.baidu.com">百度</a>';
+      let reg2 = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;
+      console.log(reg2.exec(str2));
+
+      //2.断言
+      let str3 = "123123123你知道么555啦啦啦";
+      // /\d+/
+      // 正向断言 (?=)
+      let reg3 = /\d+(?=啦)/;
+      console.log(reg3.exec(str3));
+      // 反向断言 (?<=)
+      let reg4 = /(?<=么)\d+/;
+      console.log(reg4.exec(str3));
+
+      // 3 .dot
+      let str5 = `
+        <ul>
+            <li>
+                <a>肖生克的救赎</a>
+                <p>上映日期: 1994-09-10</p>
+            </li>
+            <li>
+                <a>阿甘正传</a>
+                <p>上映日期: 1994-07-06</p>
+            </li>
+        </ul>`;
+
+      let reg5 = /<li>\s+<a>(.*?)<\/a>\s+<p>(.*?)<\/p>/;
+      console.log(reg5.exec(str5));
+      let reg6 = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/s; //匹配单个
+      console.log(reg6.exec(str5));
+      let reg7 = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+      // console.log(reg7.exec(str5));
+      let result;
+      let data = [];
+      while ((result = reg7.exec(str5))) {
+        data.push({ title: result[1], time: result[2] });
+      }
+      console.log(data);
+    </script>
+  </body>
+</html>
