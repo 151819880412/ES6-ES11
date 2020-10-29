@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      Promise.allSettled
+        接收一个数组的Promise的参数，返回一个成功的Promise，里面包含参数Promise的结果值
+      Promise.all
+        接收一个数组的Promise的参数，返回状态根据参数的状态来的，参数状态只要有一个失败那就是失败
+    */
+    // 声明两个promise对象
+    let p1 = new Promise((resolve,reject)=>{
+      setTimeout(() => {
+        reject('1')
+      }, 1000);
+    })
+    let p2 = new Promise((resolve,reject)=>{
+      setTimeout(() => {
+        reject('2')
+      }, 1000);
+    })
+    let result = Promise.allSettled([p1,p2])
+    console.log(result)
+    let result2 = Promise.all([p1,p2])
+    console.log(result2)
+  </script>
+</body>
+</html>

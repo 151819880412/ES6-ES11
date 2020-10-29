@@ -295,6 +295,56 @@ ES9：
       2. 反向断言
       3. dot .   元字符 除换行以外的任意单个字符
 
+ES10:
+  24：Object.fromEntries  将二维数组转或Map为对象
+      1.传入二维数组：数组可以传多个(多个key-value)但是每个数组只能有两项(单个key-value)
+      2.传入Map:key为字符串时是一个普通对象
+                key为一维或者多维数组时会被解析成字符串
+                key为一维或者多维数组对象时会被解析成 [object Object]
+                key为一个函数时会被解析成字符串的函数体
+                key为一个自调用的函数时会被解析成函数的return
+  
+  25：字符串扩展
+      1.trimStart  清除左侧空白
+      2.trimEnd    清除右侧空白
+
+  26：数组扩展
+      1.flat 将多维数组转为低维数组  参数为深度，是一个数字
+      2.flatMap 相当于Map+flat
+
+  27：Symbol扩展
+      Symbol.prototype.description   查看Symbol的key
+
+  28：Promise扩展
+      1.Promise.allSettled  接收一个数组的Promise的参数，返回一个成功的Promise，里面包含参数Promise的结果值
+      2.Promise.all  接收一个数组的Promise的参数，返回状态根据参数的状态来的，参数状态只要有一个失败那就是失败
+
+ES11：
+  29：class的私有属性
+        私有属性：#    类的私有属性 不能通过对象.属性访问对象的私有属性
+        class Person{
+          // 公有属性
+          name;
+          // 私有属性
+          #age;
+          #weight;
+          constructor(name,age,weight){
+            this.name = name
+            this.#age = age
+            this.#weight = weight
+          }
+          intro(){
+            console.log(this.name)
+            console.log(this.#age)
+            console.log(this.#weight)
+          }
+        }
+        let girl = new Person('小明',15,100)
+        console.log(girl)
+        // console.log(girl.#age) 不能通过对象.属性访问对象的私有属性
+        girl.intro()
+
+
 
 
 

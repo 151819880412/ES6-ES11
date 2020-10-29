@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      flat 将多维数组转为低维数组  参数为深度，是一个数字
+      flatMap 相当于Map+flat
+    */
+
+    let arr1 = [1,2,[3,4,[5,6]]]
+    console.log(arr1.flat())
+
+    let arr2 = [1,2,3,4]
+    let result1 = (arr2.map(item=>[item*10])).flat()
+    let result2 = arr2.flatMap(item=>[item*10])
+    console.log(result1)
+    console.log(result2)
+
+  </script>
+</body>
+</html>

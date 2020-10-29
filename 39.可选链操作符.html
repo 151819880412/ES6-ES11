@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      可选链操作符:?.  免去对象层层判断
+         a?.b?.c?.d   a身上有b才读取b，b有c才读取c，c有d才读取d
+    */
+   function main(config){
+     let str1 = config &&config.a&&config.a.b&&config.a.b.c&&config.a.b.c.d
+     let str2 = config?.a?.b?.c?.d
+     console.log(str1)
+     console.log(str2)
+   }
+   main({
+     a:{
+       b:{
+         c:{
+           d:{
+             e:1
+           }
+         }
+       }
+     }
+   })
+  </script>
+</body>
+</html>
